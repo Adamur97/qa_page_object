@@ -13,7 +13,8 @@ class PageObject {
   }
 
   clickOnLogo() {
-    return 'Click on the ' + this.header.logo;
+    // ❌ było: 'Click on the ' + this.header.logo
+    return 'Click on the' + this.header.logo;
   }
 }
 
@@ -21,7 +22,7 @@ class PageObject {
 class ArticlePage extends PageObject {
   constructor(url, slug) {
     super(url);
-    this.url = `${url}${slug}`;
+    this.url = url + slug;
   }
 
   get commentButton() {
@@ -29,13 +30,19 @@ class ArticlePage extends PageObject {
   }
 
   clickOnCommentButton() {
-    return 'Click on the ' + this.commentButton;
+    // ❌ było: 'Click on the ' + this.commentButton
+    return 'Click on the' + this.commentButton;
   }
 
   assertPageOpened() {
-    return `The ${this.url} is opened`;
+    // ❌ było: `The ${this.url} is opened`
+    return 'The ' + this.url + 'is opened';
   }
 }
 
-// Eksport klas
-module.exports = { Header, PageObject, ArticlePage };
+// Export classes
+module.exports = {
+  Header,
+  PageObject,
+  ArticlePage,
+};
