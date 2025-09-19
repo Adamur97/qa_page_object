@@ -13,8 +13,8 @@ class PageObject {
   }
 
   clickOnLogo() {
-    // ❌ było: 'Click on the ' + this.header.logo
-    return 'Click on the' + this.header.logo;
+    // test expects: "Click on the Conduit logo"
+    return 'Click on the ' + this.header.logo;
   }
 }
 
@@ -22,7 +22,7 @@ class PageObject {
 class ArticlePage extends PageObject {
   constructor(url, slug) {
     super(url);
-    this.url = url + slug;
+    this.url = `${url}${slug}`;
   }
 
   get commentButton() {
@@ -30,17 +30,17 @@ class ArticlePage extends PageObject {
   }
 
   clickOnCommentButton() {
-    // ❌ było: 'Click on the ' + this.commentButton
-    return 'Click on the' + this.commentButton;
+    // test expects: "Click on the [Publish comment] button"
+    return 'Click on the ' + this.commentButton;
   }
 
   assertPageOpened() {
-    // ❌ było: `The ${this.url} is opened`
-    return 'The ' + this.url + 'is opened';
+    // test expects: "The http://... is opened" (with space before is)
+    return 'The ' + this.url + ' is opened';
   }
 }
 
-// Export classes
+// Export classes for testing
 module.exports = {
   Header,
   PageObject,
